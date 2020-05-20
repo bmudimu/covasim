@@ -64,7 +64,7 @@ def make_people(sim, save_pop=False, popfile=None, verbose=None, die=True, reset
         sim.popdict = None # Once loaded, remove
     else:
         # Create the population
-        if pop_type in ['random', 'clustered', 'hybrid']:
+        if pop_type in ['random', 'clustered', 'hybrid', 'hybrid2']:
             popdict, layer_keys = make_randpop(sim, microstructure=pop_type)
         elif pop_type == 'synthpops':
             popdict, layer_keys = make_synthpop(sim)
@@ -147,8 +147,8 @@ def make_randpop(sim, use_age_data=True, use_household_data=True, sex_ratio=0.5,
     # Actually create the contacts
     if   microstructure == 'random':    contacts, layer_keys    = make_random_contacts(pop_size, sim['contacts'])
     elif microstructure == 'clustered': contacts, layer_keys, _ = make_microstructured_contacts(pop_size, sim['contacts'])
-    # elif microstructure == 'hybrid':    contacts, layer_keys, _ = make_hybrid_contacts(pop_size, ages, sim['contacts'])
-    elif microstructure == 'hybrid':    contacts, layer_keys = make_layered_contacts(pop_size, cvd.layered_contacts, loc_types, uids) #BRIAN
+    elif microstructure == 'hybrid':    contacts, layer_keys, _ = make_hybrid_contacts(pop_size, ages, sim['contacts'])
+    elif microstructure == 'hybrid2':    contacts, layer_keys = make_layered_contacts(pop_size, cvd.layered_contacts, loc_types, uids) #BRIAN
     else:
         errormsg = f'Microstructure type "{microstructure}" not found; choices are random, clustered, or hybrid'
         raise NotImplementedError(errormsg)
@@ -252,8 +252,7 @@ def make_hybrid_contacts(pop_size, ages, contacts, school_ages=None, work_ages=N
     contacts_list = [{key:[] for key in layer_keys} for i in range(pop_size)]
 
     # Start with the household contacts for each person
-    # h_contacts, _, clusters = make_microstructured_contacts(pop_size, {'h':contacts['h']})
-    h_contacts, _, clusters = make_layered_contacts(pop_size, cvd.layered_contacts, loc_types, uids)
+    h_contacts, _, clusters = make_microstructured_contacts(pop_size, {'h':contacts['h']})
 
     # Make community contacts
     c_contacts, _ = make_random_contacts(pop_size, {'c':contacts['c']})
@@ -318,7 +317,6 @@ def make_hybrid2_contacts(pop_size, ages, contacts, school_ages=None, work_ages=
     return contacts_list, layer_keys, clusters
 
 #************************BRIAN CUSTOM FUNCTION**************************************************
-# This function can be tested using the hybrid function above. Just uncomment out line 238 and comment out line 239 to test this function
 def make_layered_contacts(pop_size, contacts, loc_types, uids):
     pop_size = int(pop_size)
     contacts = sc.dcp(contacts)

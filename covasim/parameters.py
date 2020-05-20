@@ -24,7 +24,7 @@ def make_pars(set_prognoses=False, prog_by_age=True, **kwargs):
     # Population parameters
     pars['pop_size']     = 5e3 # Number ultimately susceptible to CoV
     pars['pop_infected'] = 10 # Number of initial infections
-    pars['pop_type']     = 'hybrid' # What type of population data to use -- random (fastest), synthpops (best), hybrid (compromise), or clustered (not recommended), hybrid2 (layered_contacts)
+    pars['pop_type']     = 'hybrid2' # What type of population data to use -- random (fastest), synthpops (best), hybrid (compromise), or clustered (not recommended), hybrid2 (layered_contacts)
     pars['location']     = None # What location to load data from -- default Seattle
 
     # Simulation parameters

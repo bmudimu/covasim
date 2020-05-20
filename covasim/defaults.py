@@ -194,5 +194,5 @@ def get_scen_plots():
 
 loc_type_data = np.array([0.15, 0.5, 0.3, 0.05 ]) # population distribution by location type
 
-layered_contacts = {'1':{'h': 8,   's': 40,  'w': 30,  'c': 30}, '2':{'h': 6,   's': 40,  'w': 30,  'c': 30},
-                    '3':{'h': 4,   's': 30,  'w': 20,  'c': 20}, '4':{'h': 4,   's': 20,  'w': 20,  'c': 20}}
+layered_contacts = {'1':{'h': 4,   's': 40,  'w': 40,  'c': 60}, '2':{'h': 6,   's': 40,  'w': 40,  'c': 50},
+                    '3':{'h': 4,   's': 30,  'w': 20,  'c': 30}, '4':{'h': 4,   's': 20,  'w': 20,  'c': 20}}

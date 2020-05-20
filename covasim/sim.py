@@ -210,7 +210,7 @@ class Sim(cvb.BaseSim):
                 raise sc.KeyNotFoundError(errormsg)
 
         # Handle population data
-        popdata_choices = ['random', 'hybrid', 'clustered', 'synthpops']
+        popdata_choices = ['random', 'hybrid', 'clustered', 'synthpops', 'hybrid2']
         choice = self['pop_type']
         if choice not in popdata_choices:
             choicestr = ', '.join(popdata_choices)
