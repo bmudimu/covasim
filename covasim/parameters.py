@@ -25,12 +25,12 @@ def make_pars(set_prognoses=False, prog_by_age=True, **kwargs):
     pars['pop_size']     = 5e3 # Number ultimately susceptible to CoV
     pars['pop_infected'] = 10 # Number of initial infections
     pars['pop_type']     = 'hybrid2' # What type of population data to use -- random (fastest), synthpops (best), hybrid (compromise), or clustered (not recommended), hybrid2 (layered_contacts)
-    pars['location']     = None # What location to load data from -- default Seattle
+    pars['location']     = 'South Africa' #None # What location to load data from -- default Seattle
 
     # Simulation parameters
     pars['start_day']  = '2020-03-01' # Start day of the simulation
     pars['end_day']    = None # End day of the simulation
-    pars['n_days']     = 60 # Number of days to run, if end_day isn't specified
+    pars['n_days']     = 120 # Number of days to run, if end_day isn't specified
     pars['rand_seed']  = 1 # Random seed, if None, don't reset
     pars['verbose']    = 1 # Whether or not to display information during the run -- options are 0 (silent), 1 (default), 2 (everything)
 
